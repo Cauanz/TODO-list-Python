@@ -1,8 +1,12 @@
 class Task:
-  
+  task_id = 0
   def __init__(self, title, id=None, done=False):
-    self.id = id + 1
-    # TODO PROBLEMA NO ID, AGORA QUE É NONE ELE NÃO PODE SOMAR MAS TAMBÉM SE NÃO FIZER ELE DUPLICA NO ARQUIVO DE ARMAZENAMENTO
+    if id is not None:
+      self.id = id
+      Task.task_id = id
+    else:
+      Task.task_id += 1
+      self.id = Task.task_id
     self.title = title
     self.done = done
 
